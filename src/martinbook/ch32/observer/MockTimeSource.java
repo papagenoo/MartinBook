@@ -1,4 +1,4 @@
-package martinbook.observer;
+package martinbook.ch32.observer;
 
 /**
  * Created with IntelliJ IDEA.

@@ -1,4 +1,4 @@
-package martinbook.observer;
+package martinbook.ch32.observer;
 
 import org.junit.Assert;
 import org.junit.Before;

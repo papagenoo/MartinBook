@@ -1,4 +1,4 @@
-package martinbook.abstractServer;
+package martinbook.ch33.classAdapter;
 
 /**
  * Created with IntelliJ IDEA.
