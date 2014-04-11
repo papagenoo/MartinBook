@@ -18,16 +18,15 @@ public class Order {
         this.name = name;
     }
 
-    public void addItem(Product product, int qty) {
+    public void addItem(ProductImplementation product, int qty) {
         Item item = new Item(product, qty);
         items.add(item);
     }
 
     public int getTotal() {
         int total = 0;
-        for (Item item : items)
-        {
-            Product p = item.getProduct();
+        for (Item item : items) {
+            ProductImplementation p = item.getProduct();
             int qty = item.getQuantity();
             total += p.getPrice() * qty;
         }

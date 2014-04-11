@@ -9,15 +9,15 @@ package martinbook.ch34.proxy;
  */
 public class Item {
 
-    private Product product;
+    private ProductImplementation product;
     private int quantity;
 
-    public Item(Product product, int qty) {
+    public Item(ProductImplementation product, int qty) {
         this.product = product;
         this.quantity = qty;
     }
 
-    public Product getProduct() {
+    public ProductImplementation getProduct() {
         return product;
     }
 

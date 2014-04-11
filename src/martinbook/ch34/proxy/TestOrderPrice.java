@@ -14,11 +14,13 @@ public class TestOrderPrice {
     @Test
     public void TestOrderPrice() {
         Order o = new Order("Bob");
-        Product toothpaste = new Product("Toothpaste", 129);
+        ProductImplementation toothpaste = new ProductImplementation("Toothpaste", 129);
         o.addItem(toothpaste, 1);
         Assert.assertEquals(129, o.getTotal());
-        Product mouthwash = new Product("Mouthwash", 342);
+        ProductImplementation mouthwash = new ProductImplementation("Mouthwash", 342);
         o.addItem(mouthwash, 2);
         Assert.assertEquals(813, o.getTotal());
     }
+
+
 }
