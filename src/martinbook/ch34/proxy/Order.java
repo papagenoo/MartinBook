@@ -11,22 +11,22 @@ import java.util.ArrayList;
  */
 public class Order {
 
-    private String name;
+    private String cusid;
     private ArrayList<Item> items = new ArrayList<Item>();
 
-    public Order(String name) {
-        this.name = name;
+    public Order(String cusid) {
+        this.cusid = cusid;
     }
 
-    public void addItem(ProductImplementation product, int qty) {
-        Item item = new Item(product, qty);
+    public void addItem(Product p, int qty) {
+        Item item = new Item(p, qty);
         items.add(item);
     }
 
     public int getTotal() {
         int total = 0;
         for (Item item : items) {
-            ProductImplementation p = item.getProduct();
+            Product p = item.getProduct();
             int qty = item.getQuantity();
             total += p.getPrice() * qty;
         }

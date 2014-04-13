@@ -21,6 +21,4 @@ public class TestOrderPrice {
         o.addItem(mouthwash, 2);
         Assert.assertEquals(813, o.getTotal());
     }
-
-
 }
