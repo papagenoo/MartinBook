@@ -13,7 +13,7 @@ import org.junit.Test;
  * To change this template use File | Settings | File Templates.
  */
 public class ProxyTest {
-    DB db;
+    /*DB db;
 
     @Before
     public void setUp()
@@ -44,7 +44,7 @@ public class ProxyTest {
         }
     }
     @Test
-    public void ProductProxy()
+    public void productProxy()
     {
         try {
             Product p = new ProductProxy("ProxyTest1");
@@ -57,7 +57,7 @@ public class ProxyTest {
         }
     }
     @Test
-    public void OrderProxyTotal()
+    public void orderProxyTotal()
     {
 //        try {
 //            db.store(new ProductData("Wheaties", 349, "wheaties"));
@@ -76,7 +76,7 @@ public class ProxyTest {
     }
 
     @Test
-    public void OrderKeyGeneration() {
+    public void orderKeyGeneration() {
         try {
             OrderData o1 = db.newOrder("Bob");
             OrderData o2 = db.newOrder("Bill");
@@ -91,7 +91,7 @@ public class ProxyTest {
 
 
     @Test
-    public void StoreItem()
+    public void storeItem()
     {
         try {
             ItemData storedItem = new ItemData(1, 3, "sku");
@@ -114,5 +114,5 @@ public class ProxyTest {
             System.out.println(e.getMessage());
             Assert.fail();
         }
-    }
+    }*/
 }

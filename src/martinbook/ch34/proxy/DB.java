@@ -1,6 +1,7 @@
 package martinbook.ch34.proxy;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * Created by max on 11/04/14.
@@ -117,10 +118,6 @@ public class DB {
         command.executeUpdate();
     }
 
-    public OrderData getOrderData(int orderId) {
-        return null;  //To change body of created methods use File | Settings | File Templates.
-    }
-
     private PreparedStatement
     buildItemInsersionStatement(ItemData id) throws Exception {
         String sql = "INSERT INTO Items(orderId,quantity,sku) " +
@@ -132,4 +129,62 @@ public class DB {
         return command;
     }
 
+    public ItemData[] getItemsForOrder(int orderId) throws Exception {
+        PreparedStatement command =
+                buildItemsForOrderQueryStatement(orderId);
+        ResultSet reader = command.executeQuery();
+        ItemData[] id = extractItemDataFromResultSet(reader);
+        reader.close();
+        return id;
+    }
+
+    private PreparedStatement
+    buildItemsForOrderQueryStatement(int orderId) throws Exception {
+        String sql = "SELECT * FROM Items " +
+                     "WHERE orderid = ? ";
+        PreparedStatement command = connection.prepareStatement(sql);
+        command.setInt(1, orderId);
+        return command;
+    }
+
+    private ItemData[]
+    extractItemDataFromResultSet(ResultSet reader) throws Exception {
+        ArrayList items = new ArrayList();
+        while (reader.next())
+        {
+            int orderId = reader.getInt("orderId");
+            int quantity = reader.getInt("quantity");
+            String sku = reader.getString("sku");
+            ItemData id = new ItemData(orderId, quantity, sku);
+            items.add(id);
+        }
+        return (ItemData[])items.toArray(new ItemData[items.size()]);
+    }
+
+    public OrderData
+    getOrderData(int orderId) throws Exception {
+        String sql = "SELECT cusid FROM orders " +
+                     "WHERE orderid = ? ";
+        PreparedStatement command = connection.prepareStatement(sql);
+        command.setInt(1, orderId);
+        ResultSet reader = command.executeQuery();
+        OrderData od = null;
+        if (reader.next())
+            od = new OrderData(orderId, reader.getString("cusid"));
+        reader.close();
+        return od;
+    }
+
+    public void
+    clear() throws Exception {
+        executeSql("DELETE FROM Items");
+        executeSql("DELETE FROM Orders");
+        executeSql("DELETE FROM Products");
+    }
+
+    private void
+    executeSql(String sql) throws Exception {
+        PreparedStatement command = connection.prepareStatement(sql);
+        command.execute();
+    }
 }
