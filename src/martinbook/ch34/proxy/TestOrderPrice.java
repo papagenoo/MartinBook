@@ -13,12 +13,17 @@ import org.junit.Test;
 public class TestOrderPrice {
     @Test
     public void TestOrderPrice() {
-        Order o = new Order("Bob");
-        ProductImplementation toothpaste = new ProductImplementation("Toothpaste", 129);
-        o.addItem(toothpaste, 1);
-        Assert.assertEquals(129, o.getTotal());
-        ProductImplementation mouthwash = new ProductImplementation("Mouthwash", 342);
-        o.addItem(mouthwash, 2);
-        Assert.assertEquals(813, o.getTotal());
+        try {
+            Order o = new OrderImp("Bob");
+            ProductImp toothpaste = new ProductImp("ProxyTest1", "Toothpaste", 129);
+            o.addItem(toothpaste, 1);
+            Assert.assertEquals(129, o.getTotal());
+            ProductImp mouthwash = new ProductImp("ProxyTest1", "Mouthwash", 342);
+            o.addItem(mouthwash, 2);
+            Assert.assertEquals(813, o.getTotal());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            Assert.fail();
+        }
     }
 }

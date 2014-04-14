@@ -13,25 +13,39 @@ public class DBTest {
 
     @Before
     public void setUp() {
-        db = new DB();
-        db.init();
+        try {
+            db = DB.getInstance();
+            db.init();
+        } catch (Throwable e) {
+            System.out.println(e.getMessage());
+            Assert.fail();
+        }
     }
 
     @After
     public void tearDown() {
-        db.close();
+        try {
+            db.close();
+        } catch (Throwable e) {
+            System.out.println(e.getMessage());
+            Assert.fail();
+        }
     }
 
     @Test
     public void storeProduct() {
-//        ProductData storedProduct = new ProductData();
-//        storedProduct.name = "MyProduct";
-//        storedProduct.price = 1234;
-//        storedProduct.sku = "999";
-//        DB.store(storedProduct);
-//        ProductData retrievedProduct =
-//                DB.getProductData("999");
-//        DB.deleteProductData("999");
-//        Assert.assertEquals(storedProduct, retrievedProduct);
+        try {
+            ProductData storedProduct = new ProductData();
+            storedProduct.name = "MyProduct";
+            storedProduct.price = 1234;
+            storedProduct.sku = "999";
+            db.store(storedProduct);
+            ProductData retrievedProduct = db.getProductData("999");
+            db.deleteProductData("999");
+            Assert.assertEquals(storedProduct, retrievedProduct);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            Assert.fail();
+        }
     }
 }
