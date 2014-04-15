@@ -13,7 +13,7 @@ import org.junit.Test;
  * To change this template use File | Settings | File Templates.
  */
 public class ProxyTest {
-    /*DB db;
+    DB db;
 
     @Before
     public void setUp()
@@ -59,20 +59,22 @@ public class ProxyTest {
     @Test
     public void orderProxyTotal()
     {
-//        try {
-//            db.store(new ProductData("Wheaties", 349, "wheaties"));
-//            db.store(new ProductData("Crest", 258, "crest"));
-//            ProductProxy wheaties = new ProductProxy("wheaties");
-//            ProductProxy crest = new ProductProxy("crest");
-//            OrderData od = db.newOrder("testOrderProxy");
-//            OrderProxy order = new OrderProxy(od.orderId);
-////        order.AddItem(crest, 1);
-////        order.AddItem(wheaties, 2);
-////        Assert.AreEqual(956, order.Total);
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//            Assert.fail();
-//        }
+        try {
+            db.store(new ProductData("Wheaties", 349, "wheaties"));
+            db.store(new ProductData("Crest", 258, "crest"));
+            ProductProxy wheaties = new ProductProxy("wheaties");
+            ProductProxy crest = new ProductProxy("crest");
+            OrderData od = db.newOrder("testOrderProxy");
+            OrderProxy order = new OrderProxy(od.orderId);
+            System.out.println(">>>>>>>");
+            order.addItem(crest, 1);
+            //order.addItem(wheaties, 2);
+            //Assert.assertEquals(956, order.getTotal());
+        } catch (Exception e) {
+            System.out.println("ERROR");
+            System.out.println(e);
+            //Assert.fail();
+        }
     }
 
     @Test
@@ -114,5 +116,5 @@ public class ProxyTest {
             System.out.println(e.getMessage());
             Assert.fail();
         }
-    }*/
+    }
 }

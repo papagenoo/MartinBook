@@ -23,8 +23,7 @@ public class OrderProxy implements Order {
 
     @Override
     public void addItem(Product p, int quantity) throws Exception {
-        ItemData id =
-                new ItemData(orderId, quantity, p.getSku());
+        ItemData id = new ItemData(orderId, quantity, p.getSku());
         db.store(id);
     }
 

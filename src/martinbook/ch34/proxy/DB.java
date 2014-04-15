@@ -120,7 +120,7 @@ public class DB {
 
     private PreparedStatement
     buildItemInsersionStatement(ItemData id) throws Exception {
-        String sql = "INSERT INTO Items(orderId,quantity,sku) " +
+        String sql = "INSERT INTO Items(orderId, quantity, sku) " +
                      "VALUES (?, ?, ?)";
         PreparedStatement command = connection.prepareStatement(sql);
         command.setInt(1, id.orderId);
