@@ -14,7 +14,6 @@ public abstract class AbstractDbGatewayTest {
     protected ResultSet reader;
 
     protected void executeSql(String sql) throws Exception {
-        System.out.println(sql);
         PreparedStatement command = connection.prepareStatement(sql);
         command.execute();
     }

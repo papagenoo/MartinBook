@@ -66,14 +66,12 @@ public class ProxyTest {
             ProductProxy crest = new ProductProxy("crest");
             OrderData od = db.newOrder("testOrderProxy");
             OrderProxy order = new OrderProxy(od.orderId);
-            System.out.println(">>>>>>>");
             order.addItem(crest, 1);
-            //order.addItem(wheaties, 2);
-            //Assert.assertEquals(956, order.getTotal());
+            order.addItem(wheaties, 2);
+            Assert.assertEquals(956, order.getTotal());
         } catch (Exception e) {
-            System.out.println("ERROR");
             System.out.println(e);
-            //Assert.fail();
+            Assert.fail();
         }
     }
 
@@ -82,15 +80,14 @@ public class ProxyTest {
         try {
             OrderData o1 = db.newOrder("Bob");
             OrderData o2 = db.newOrder("Bill");
-           int firstOrderId = o1.orderId;
-          int secondOrderId = o2.orderId;
-          Assert.assertEquals(firstOrderId + 1, secondOrderId);
+            int firstOrderId = o1.orderId;
+            int secondOrderId = o2.orderId;
+            Assert.assertEquals(firstOrderId + 1, secondOrderId);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             Assert.fail();
         }
     }
-
 
     @Test
     public void storeItem()
@@ -106,6 +103,7 @@ public class ProxyTest {
             Assert.fail();
         }
     }
+
     @Test
     public void noItems()
     {

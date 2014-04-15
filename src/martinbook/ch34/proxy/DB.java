@@ -103,7 +103,6 @@ public class DB {
         int newOrderId;
         if (rs.next()) {
             newOrderId = rs.getInt(1);
-            System.out.println(newOrderId);
         } else {
             throw new SQLException("Creating user failed, no generated key obtained.");
         }

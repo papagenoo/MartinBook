@@ -13,6 +13,7 @@ public class OrderProxy implements Order {
 
     public OrderProxy(int orderId) {
         this.orderId = orderId;
+        db = DB.getInstance();
     }
 
     @Override
