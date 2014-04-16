@@ -11,8 +11,8 @@ public class AddCommissionedEmployee extends AddEmployeeTransaction {
     private double salary;
     private double comission;
 
-    public AddCommissionedEmployee(int empId, String name, String address, double salary, double comission) {
-        super(empId, name, address);
+    public AddCommissionedEmployee(int empId, String name, String address, double salary, double comission, PayrollDatabase database) {
+        super(empId, name, address, database);
         this.salary = salary;
         this.comission = comission;
     }

@@ -1,7 +1,5 @@
 package martinbook.payroll;
 
-import static org.junit.Assert.*;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -9,12 +7,14 @@ public class TestAddSalariedEmployee {
 
     @Test
     public void TestAddSalariedEmployee() throws Throwable {
-        int empId = 1;
-        martinbook.payroll.AddSalariedEmployee t =
-            new martinbook.payroll.AddSalariedEmployee(empId, "Bob", "Home", 1000.00);
-        t.Execute();
+        PayrollDatabase database = new InMemoryPayrollDatabase();
 
-        Employee e = PayrollDatabase.GetEmployee(empId);
+        int empId = 1;
+        AddSalariedEmployee t =
+            new AddSalariedEmployee(empId, "Bob", "Home", 1000.00, database);
+        t.execute();
+
+        Employee e = database.getEmployee(empId);
         Assert.assertEquals("Bob", e.getName());
 
         PaymentClassification pc = e.getClassification();

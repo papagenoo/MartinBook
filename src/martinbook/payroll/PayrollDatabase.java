@@ -1,21 +1,16 @@
 package martinbook.payroll;
 
-import java.util.Hashtable;
+import java.util.ArrayList;
 
-public class PayrollDatabase {
-
-    private static Hashtable<Integer, Employee> employees = new Hashtable<Integer, Employee>();
-    
-    public static void AddEmployee(int id, Employee employee)
-    {
-      employees.put(id, employee);
-    }
-    
-	public static Employee GetEmployee(int id) {
-		return employees.get(id);
-	}
-
-    public static void DeleteEmployee(int empId) {
-        employees.remove(empId);
-    }
+/**
+ * Created by max on 17/04/14.
+ */
+public interface PayrollDatabase {
+    void addEmployee(Employee employee);
+    Employee getEmployee(int id);
+    void deleteEmployee(int id);
+//    void addUnionMember(int id, Employee e);
+//    Employee getUnionMember(int id);
+//    void removeUnionMember(int memberId);
+//    ArrayList getAllEmployeeIds();
 }

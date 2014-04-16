@@ -15,15 +15,17 @@ import static org.junit.Assert.assertTrue;
 public class TestTimeCardTransaction {
     @Test
     public void TestTimeCardTransaction() throws Throwable {
+        PayrollDatabase database = new InMemoryPayrollDatabase();
+
         int empId = 5;
         AddHourlyEmployee t =
-                new AddHourlyEmployee(empId, "Bill", "Home", 15.25);
-        t.Execute();
+                new AddHourlyEmployee(empId, "Bill", "Home", 15.25, database);
+        t.execute();
         TimeCardTransaction tct =
                 new TimeCardTransaction(
-                        new Date(2005, 7, 31), 8.0, empId);
-        tct.Execute();
-        Employee e = PayrollDatabase.GetEmployee(empId);
+                        new Date(2005, 7, 31), 8.0, empId, database);
+        tct.execute();
+        Employee e = database.getEmployee(empId);
         Assert.assertNotNull(e);
 
         PaymentClassification pc = e.getClassification();

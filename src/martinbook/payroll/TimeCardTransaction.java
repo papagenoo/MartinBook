@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Created by max on 01/04/14.
  */
-public class TimeCardTransaction implements Transaction {
+public class TimeCardTransaction extends Transaction {
 
     protected Date date;
 
@@ -13,15 +13,16 @@ public class TimeCardTransaction implements Transaction {
 
     protected int empId;
 
-    public TimeCardTransaction(Date date, double hours, int empId) {
+    public TimeCardTransaction(Date date, double hours, int empId, PayrollDatabase database) {
+        super(database);
         this.date = date;
         this.hours = hours;
         this.empId = empId;
     }
 
     @Override
-    public void Execute() throws Throwable {
-        Employee e = PayrollDatabase.GetEmployee(empId);
+    public void execute() throws Throwable {
+        Employee e = database.getEmployee(empId);
         if (e != null) {
             HourlyClassification hc = (HourlyClassification) e.getClassification();
             if (hc != null)

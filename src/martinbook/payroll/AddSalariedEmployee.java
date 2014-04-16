@@ -4,8 +4,8 @@ public class AddSalariedEmployee extends AddEmployeeTransaction {
 
     private double salary;
 
-	public AddSalariedEmployee(int empId, String name, String address, double salary) {
-		super(empId, name, address);
+	public AddSalariedEmployee(int empId, String name, String address, double salary, PayrollDatabase database) {
+		super(empId, name, address, database);
 		this.salary = salary;
 	}
 

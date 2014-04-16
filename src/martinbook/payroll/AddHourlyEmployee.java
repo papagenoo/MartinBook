@@ -4,8 +4,8 @@ public class AddHourlyEmployee extends AddEmployeeTransaction {
 
     double rate;
 
-    public AddHourlyEmployee(int empId, String name, String address, double rate) {
-        super(empId, name, address);
+    public AddHourlyEmployee(int empId, String name, String address, double rate, PayrollDatabase database) {
+        super(empId, name, address, database);
         this.rate = rate;
     }
 
